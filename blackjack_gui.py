@@ -2,9 +2,7 @@ import tkinter
 import customtkinter
 import random
 
-cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "K", "Q", "A"]
-
-# player_score: int = 0
+cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 11]
 
 def draw():
     global player_score
@@ -12,24 +10,12 @@ def draw():
     win_label.configure(text=" ")
     randint = random.randint(0, len(cards) - 1)
     player_cards.append(cards[randint])
-
-    if cards[randint] == "Q" or cards[randint] == "K":
-        player_score += 10
-    elif cards[randint] == "A":
-        player_score += 11
-    else:
-        player_score += int(cards[randint])
+    player_score += int(cards[randint])
 
     if enemy_score <= 16:
         randint = random.randint(0, len(cards) - 1)
         enemy_cards.append(cards[randint])
-
-        if cards[randint] == "Q" or cards[randint] == "K":
-            enemy_score += 10
-        elif cards[randint] == "A":
-            enemy_score += 11
-        else:
-            enemy_score += int(cards[randint])
+        enemy_score += int(cards[randint])
 
     if player_score > 21 or enemy_score > 21:
         end_game()
